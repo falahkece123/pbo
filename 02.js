@@ -1,21 +1,21 @@
 class Mobil {
-// Konstruktor untuk inisialisasi objek
-constructor(merek, model, tahun) {
-this.merek = merek; // Properti objek
-this.model = model;
-this.tahun = tahun;}
+    // Konstruktor untuk inisialisasi objek
+    constructor(merek, model, tahun) {
+        this.merek = merek; // Properti objek
+        this.model = model;
+        this.tahun = tahun;
+    } // Removed extra closing brace here
 
-// Metode untuk menampilkan informasi mobil
-displaylnfo () {
-console.log( Mobil: ${this.merek} ${this.model}
-(${this.tahun})');}
+    // Metode untuk menampilkan informasi mobil
+    displayInfo() { // Fixed typo: displaylnfo -> displayInfo
+        console.log(`Mobil: ${this.merek} ${this.model} (${this.tahun})`); // Fixed: used backticks for template literal
+    }
 }
-}
+
 // Instansiasi objek dari kelas Mobil
-const mobill = new Mobil('Toyota', 'Corolla', 2020); //
-Membuat objek mobill
-const mobil2 = new Mobil('Honda', 'Civic', 2021); //
-Membuat objek mobil2
+const mobil1 = new Mobil('Toyota', 'Corolla', 2020); // Membuat objek mobil1
+const mobil2 = new Mobil('Honda', 'Civic', 2021); // Membuat objek mobil2
+
 // Memanggil metode untuk menampilkan informasi
-mobill.displayInfo(); // Output: Mobil: Toyota Corolla (2020)
+mobil1.displayInfo(); // Output: Mobil: Toyota Corolla (2020)
 mobil2.displayInfo(); // Output: Mobil: Honda Civic (2021)
