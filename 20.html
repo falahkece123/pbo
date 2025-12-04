@@ -10,7 +10,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -20,7 +19,6 @@
             align-items: center;
             padding: 20px;
         }
-
         .container {
             background: white;
             padding: 40px;
@@ -31,7 +29,6 @@
             width: 100%;
             animation: fadeIn 0.5s ease-in;
         }
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -42,19 +39,16 @@
                 transform: translateY(0);
             }
         }
-
         h1 {
             color: #333;
             margin-bottom: 30px;
             font-size: 2em;
             transition: all 0.3s ease;
         }
-
         h1.changed {
             color: #667eea;
             transform: scale(1.05);
         }
-
         button {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -67,16 +61,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
         }
-
         button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
-
         button:active {
             transform: translateY(0);
         }
-
         .info {
             margin-top: 20px;
             padding: 15px;
@@ -95,11 +86,10 @@
             Klik tombol di atas untuk mengubah teks!
         </div>
     </div>
-
     <script>
         function ubahTeks() {
             const title = document.getElementById("title");
-            title.innerText = "Teks berhasil diubah!";
+            title.innerText = "Hallo Agung!!";
             title.classList.add("changed");
         }
     </script>
