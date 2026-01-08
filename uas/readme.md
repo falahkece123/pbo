@@ -10,8 +10,10 @@
             padding: 0;
             box-sizing: border-box;
         }
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+        
         body {
-            font-family: 'Arial Black', 'Arial Bold', sans-serif;
+            font-family: 'Cormorant Garamond', serif;
             background: #0a0a0a;
             min-height: 100vh;
             display: flex;
@@ -68,30 +70,37 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
         h1 {
+            font-family: 'Cinzel', serif;
             color: #fff;
             margin-bottom: 10px;
             font-size: 2em;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-weight: 600;
         }
         .subtitle {
+            font-family: 'Cormorant Garamond', serif;
             color: #888;
-            font-size: 0.9em;
+            font-size: 1.1em;
             margin-bottom: 30px;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            font-weight: 300;
+            font-style: italic;
         }
         .input-group {
             margin-bottom: 20px;
             text-align: left;
         }
         label {
+            font-family: 'Cinzel', serif;
             display: block;
             color: #ccc;
             margin-bottom: 8px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            font-weight: 400;
         }
         input {
             width: 100%;
@@ -109,17 +118,18 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
         button {
+            font-family: 'Cinzel', serif;
             background: #fff;
             color: #000;
             border: 2px solid #fff;
             padding: 15px 40px;
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 15px;
+            font-weight: 600;
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             width: 100%;
             margin-top: 10px;
         }
