@@ -1,195 +1,52 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Chrome Hearts Login</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Courier New', monospace;
+            font-family: 'Arial Black', 'Arial Bold', sans-serif;
             background: #0a0a0a;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
             position: relative;
             overflow: hidden;
         }
-
         body::before {
-            content: '';
+            content: "✟";
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
-            z-index: 0;
-        }
-
-        .login-container {
-            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
-            padding: 80px 50px;
-            border-radius: 2px;
-            box-shadow: 
-                0 25px 60px rgba(0, 0, 0, 0.8),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            width: 100%;
-            max-width: 420px;
-            min-height: 80vh;
-            position: relative;
-            z-index: 1;
-            border: 1px solid #333;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .logo {
-            text-align: center;
-            margin-bottom: 80px;
-            position: relative;
-        }
-
-        .cross-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .cross-symbol {
-            font-size: 100px;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            animation: glow 3s ease-in-out infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
-            50% { text-shadow: 0 0 30px rgba(255, 255, 255, 0.5); }
-        }
-
-        .decorative-line {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #666, transparent);
-            margin: 30px 0;
-        }
-
-        .form-group {
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 12px;
-            color: #999;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 16px 20px;
-            border: 1px solid #333;
-            background: #0a0a0a;
-            color: #fff;
-            font-size: 15px;
-            font-family: 'Courier New', monospace;
-            transition: all 0.4s ease;
-            letter-spacing: 1px;
-        }
-
-        input[type="text"]:focus,
-        input[type="password"]:focus {
-            outline: none;
-            border-color: #666;
-            background: #0f0f0f;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-        }
-
-        input::placeholder {
-            color: #444;
-        }
-
-        .btn-login {
-            width: 100%;
-            padding: 18px;
-            background: #fff;
-            color: #000;
-            border: none;
-            font-size: 13px;
-            font-weight: 900;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Courier New', monospace;
-            margin-top: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-login::before {
-            content: '';
-            position: absolute;
+            font-size: 400px;
+            color: #1a1a1a;
+            opacity: 0.1;
             top: 50%;
             left: 50%;
-            width: 0;
-            height: 0;
-            background: #000;
-            border-radius: 50%;
             transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            z-index: 0;
         }
-
-        .btn-login:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-login:hover {
-            color: #fff;
-        }
-
-        .btn-login span {
+        .container {
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            padding: 50px 40px;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+            border: 2px solid #333;
+            animation: fadeIn 0.5s ease-in;
             position: relative;
             z-index: 1;
         }
-
-        .btn-login:active {
-            transform: scale(0.98);
-        }
-
-        .warning {
-            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-            color: #fff;
-            padding: 18px;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: 600;
-            letter-spacing: 2px;
-            font-size: 12px;
-            display: none;
-            border: 1px solid #444;
-            animation: slideDown 0.4s ease, shake 0.5s;
-        }
-
-        .warning.show {
-            display: block;
-        }
-
-        @keyframes slideDown {
+        @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(-20px);
@@ -199,210 +56,201 @@
                 transform: translateY(0);
             }
         }
-
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
-            20%, 40%, 60%, 80% { transform: translateX(8px); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
         }
-
-        .corner-accent {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border: 1px solid #333;
+        .logo {
+            font-size: 3em;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
-
-        .corner-accent.top-left {
-            top: -1px;
-            left: -1px;
-            border-right: none;
-            border-bottom: none;
+        h1 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 2em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
-
-        .corner-accent.top-right {
-            top: -1px;
-            right: -1px;
-            border-left: none;
-            border-bottom: none;
+        .subtitle {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
         }
-
-        .corner-accent.bottom-left {
-            bottom: -1px;
-            left: -1px;
-            border-right: none;
-            border-top: none;
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
         }
-
-        .corner-accent.bottom-right {
-            bottom: -1px;
-            right: -1px;
-            border-left: none;
-            border-top: none;
+        label {
+            display: block;
+            color: #ccc;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-
-        .input-wrapper {
-            position: relative;
-        }
-
-        .input-wrapper::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #fff, transparent);
-            transition: width 0.4s;
-        }
-
-        .input-wrapper:focus-within::after {
+        input {
             width: 100%;
+            padding: 15px;
+            background: #0a0a0a;
+            border: 2px solid #333;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
-
-        .welcome-screen {
+        input:focus {
+            outline: none;
+            border-color: #666;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        button {
+            background: #fff;
+            color: #000;
+            border: 2px solid #fff;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        .warning {
             display: none;
-            text-align: center;
-            animation: fadeIn 1s ease;
+            margin-top: 20px;
+            padding: 15px;
+            background: #1a0000;
+            border: 2px solid #ff0000;
+            border-radius: 5px;
+            color: #ff6666;
+            font-weight: bold;
+            animation: shake 0.5s ease-in-out;
         }
-
-        .welcome-screen.show {
+        .warning.show {
             display: block;
         }
-
-        .welcome-title {
-            font-size: 48px;
-            color: #fff;
-            font-weight: 900;
-            letter-spacing: 8px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            animation: slideUp 1s ease;
+        .success-screen {
+            display: none;
         }
-
-        .welcome-subtitle {
-            font-size: 24px;
-            color: #999;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            animation: slideUp 1.2s ease;
+        .success-screen.show {
+            display: block;
         }
-
-        .welcome-cross {
-            font-size: 120px;
+        .welcome-text {
+            font-size: 2.5em;
             color: #fff;
-            margin: 40px 0;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+            margin: 30px 0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: glow 2s ease-in-out infinite;
+        }
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                             0 0 20px rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                             0 0 30px rgba(255, 255, 255, 0.5);
+            }
+        }
+        .cross-decoration {
+            font-size: 4em;
+            color: #fff;
+            margin: 20px 0;
             animation: pulse 2s ease-in-out infinite;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         @keyframes pulse {
-            0%, 100% { 
+            0%, 100% {
                 transform: scale(1);
-                text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+                opacity: 1;
             }
-            50% { 
-                transform: scale(1.05);
-                text-shadow: 0 0 50px rgba(255, 255, 255, 0.6);
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
             }
-        }
-
-        .login-form {
-            display: block;
-        }
-
-        .login-form.hide {
-            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="corner-accent top-left"></div>
-        <div class="corner-accent top-right"></div>
-        <div class="corner-accent bottom-left"></div>
-        <div class="corner-accent bottom-right"></div>
-        
-        <div class="login-form" id="loginFormContainer">
-            <div class="logo">
-                <div class="cross-container">
-                    <div class="cross-symbol">✟</div>
-                </div>
+    <div class="container">
+        <div id="loginScreen">
+            <div class="logo">✟</div>
+            <h1>Chrome Hearts</h1>
+            <div class="subtitle">Exclusive Access</div>
+            
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username">
             </div>
             
-            <div class="decorative-line"></div>
-            
-            <div id="warning" class="warning">
-                ⚠ AKSES DITOLAK
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password">
             </div>
             
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <div class="input-wrapper">
-                        <input type="text" id="username" name="username" placeholder="Enter username" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="input-wrapper">
-                        <input type="password" id="password" name="password" placeholder="Enter password" required>
-                    </div>
-                </div>
-                
-                <button type="submit" class="btn-login">
-                    <span>✟ MASUK ✟</span>
-                </button>
-            </form>
+            <button onclick="login()">Login</button>
+            
+            <div class="warning" id="warning">
+                ⚠ Access Denied! Wrong credentials.
+            </div>
         </div>
-
-        <div class="welcome-screen" id="welcomeScreen">
-            <div class="welcome-cross">✟</div>
-            <div class="welcome-title">Welcome</div>
-            <div class="welcome-subtitle">Chrome Hearts Gang</div>
+        
+        <div class="success-screen" id="successScreen">
+            <div class="cross-decoration">✟</div>
+            <h1 class="welcome-text">Welcome</h1>
+            <h1 class="welcome-text">CHROME HEARTS</h1>
+            <h1 class="welcome-text">Gang</h1>
+            <div class="cross-decoration">✟</div>
         </div>
     </div>
-
+    
     <script>
-        const loginForm = document.getElementById('loginForm');
-        const warningDiv = document.getElementById('warning');
-        const loginFormContainer = document.getElementById('loginFormContainer');
-        const welcomeScreen = document.getElementById('welcomeScreen');
-        const correctUsername = 'falahkece';
-        const correctPassword = 'falahkece123';
-
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const warning = document.getElementById("warning");
+            const loginScreen = document.getElementById("loginScreen");
+            const successScreen = document.getElementById("successScreen");
             
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (username === correctUsername && password === correctPassword) {
-                warningDiv.classList.remove('show');
-                loginFormContainer.classList.add('hide');
-                welcomeScreen.classList.add('show');
+            if (username === "falahkece" && password === "falahkece123") {
+                warning.classList.remove("show");
+                loginScreen.classList.remove("show");
+                loginScreen.style.display = "none";
+                successScreen.classList.add("show");
             } else {
-                warningDiv.classList.add('show');
+                warning.classList.add("show");
                 setTimeout(() => {
-                    warningDiv.classList.remove('show');
+                    warning.classList.remove("show");
                 }, 3000);
+            }
+        }
+        
+        document.getElementById("password").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                login();
+            }
+        });
+        
+        document.getElementById("username").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                document.getElementById("password").focus();
             }
         });
     </script>
