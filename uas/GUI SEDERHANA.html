@@ -10,10 +10,10 @@
             padding: 0;
             box-sizing: border-box;
         }
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Bodoni+Moda:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
         
         body {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Libre Baskerville', serif;
             background: #0a0a0a;
             min-height: 100vh;
             display: flex;
@@ -33,6 +33,15 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 0;
+            animation: rotateCross 20s linear infinite;
+        }
+        @keyframes rotateCross {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
         .container {
             background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
@@ -44,9 +53,19 @@
             max-width: 450px;
             width: 100%;
             border: 2px solid #333;
-            animation: fadeIn 0.5s ease-in;
+            animation: slideInScale 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             position: relative;
             z-index: 1;
+        }
+        @keyframes slideInScale {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
         @keyframes fadeIn {
             from {
@@ -70,37 +89,50 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
         h1 {
-            font-family: 'Cinzel', serif;
+            font-family: 'Playfair Display', serif;
             color: #fff;
             margin-bottom: 10px;
-            font-size: 2em;
-            letter-spacing: 3px;
+            font-size: 2.2em;
+            letter-spacing: 4px;
             text-transform: uppercase;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            font-weight: 600;
+            font-weight: 700;
+            animation: fadeInDown 1s ease-out 0.5s both;
         }
         .subtitle {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Bodoni Moda', serif;
             color: #888;
             font-size: 1.1em;
             margin-bottom: 30px;
-            letter-spacing: 2px;
-            font-weight: 300;
+            letter-spacing: 3px;
+            font-weight: 400;
             font-style: italic;
+            animation: fadeInDown 1s ease-out 0.7s both;
         }
         .input-group {
             margin-bottom: 20px;
             text-align: left;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         label {
-            font-family: 'Cinzel', serif;
+            font-family: 'Playfair Display', serif;
             display: block;
             color: #ccc;
             margin-bottom: 8px;
             font-size: 0.85em;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 400;
+            font-weight: 600;
         }
         input {
             width: 100%;
@@ -110,6 +142,7 @@
             border-radius: 5px;
             color: #fff;
             font-size: 16px;
+            font-family: 'Libre Baskerville', serif;
             transition: all 0.3s ease;
         }
         input:focus {
@@ -118,13 +151,13 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
         button {
-            font-family: 'Cinzel', serif;
+            font-family: 'Playfair Display', serif;
             background: #fff;
             color: #000;
             border: 2px solid #fff;
             padding: 15px 40px;
             font-size: 15px;
-            font-weight: 600;
+            font-weight: 700;
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -132,6 +165,7 @@
             letter-spacing: 3px;
             width: 100%;
             margin-top: 10px;
+            animation: fadeInUp 1s ease-out 1.1s both;
         }
         button:hover {
             background: #000;
@@ -145,13 +179,61 @@
         .warning {
             display: none;
             margin-top: 20px;
-            padding: 15px;
-            background: #1a0000;
+            padding: 15px 20px;
+            background: linear-gradient(145deg, #2a0000, #1a0000);
             border: 2px solid #ff0000;
             border-radius: 5px;
-            color: #ff6666;
-            font-weight: bold;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: 1px;
             animation: shake 0.5s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .warning::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.3), transparent);
+            animation: slideWarning 1.5s ease-in-out infinite;
+        }
+        @keyframes slideWarning {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        .warning-icon {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        .warning-btn {
+            display: block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        .warning-btn:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
         }
         .warning.show {
             display: block;
@@ -163,11 +245,13 @@
             display: block;
         }
         .welcome-text {
+            font-family: 'Playfair Display', serif;
             font-size: 2.5em;
             color: #fff;
             margin: 30px 0;
-            letter-spacing: 3px;
+            letter-spacing: 5px;
             text-transform: uppercase;
+            font-weight: 700;
             animation: glow 2s ease-in-out infinite;
         }
         @keyframes glow {
@@ -218,7 +302,9 @@
             <button onclick="login()">Login</button>
             
             <div class="warning" id="warning">
-                ⚠ Access Denied! Wrong credentials.
+                <span class="warning-icon">⚠</span>
+                <span>Access Denied! Invalid Credentials.</span>
+                <button class="warning-btn" onclick="closeWarning()">Try Again</button>
             </div>
         </div>
         
@@ -246,10 +332,15 @@
                 successScreen.classList.add("show");
             } else {
                 warning.classList.add("show");
-                setTimeout(() => {
-                    warning.classList.remove("show");
-                }, 3000);
             }
+        }
+        
+        function closeWarning() {
+            const warning = document.getElementById("warning");
+            warning.classList.remove("show");
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("username").focus();
         }
         
         document.getElementById("password").addEventListener("keypress", function(event) {
