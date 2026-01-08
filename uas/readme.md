@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -35,21 +34,25 @@
 
         .login-container {
             background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
-            padding: 60px 50px;
+            padding: 80px 50px;
             border-radius: 2px;
             box-shadow: 
                 0 25px 60px rgba(0, 0, 0, 0.8),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             width: 100%;
             max-width: 420px;
+            min-height: 80vh;
             position: relative;
             z-index: 1;
             border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .logo {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 80px;
             position: relative;
         }
 
@@ -58,11 +61,11 @@
             justify-content: center;
             align-items: center;
             gap: 30px;
-            margin-bottom: 30px;
+            margin-bottom: 50px;
         }
 
         .cross-symbol {
-            font-size: 60px;
+            font-size: 100px;
             color: #fff;
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
             animation: glow 3s ease-in-out infinite;
@@ -80,7 +83,7 @@
         }
 
         .form-group {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             position: relative;
         }
 
@@ -256,6 +259,77 @@
         .input-wrapper:focus-within::after {
             width: 100%;
         }
+
+        .welcome-screen {
+            display: none;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        .welcome-screen.show {
+            display: block;
+        }
+
+        .welcome-title {
+            font-size: 48px;
+            color: #fff;
+            font-weight: 900;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            animation: slideUp 1s ease;
+        }
+
+        .welcome-subtitle {
+            font-size: 24px;
+            color: #999;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            animation: slideUp 1.2s ease;
+        }
+
+        .welcome-cross {
+            font-size: 120px;
+            color: #fff;
+            margin: 40px 0;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+            }
+            50% { 
+                transform: scale(1.05);
+                text-shadow: 0 0 50px rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .login-form {
+            display: block;
+        }
+
+        .login-form.hide {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -265,42 +339,52 @@
         <div class="corner-accent bottom-left"></div>
         <div class="corner-accent bottom-right"></div>
         
-        <div class="logo">
-            <div class="cross-container">
-                <div class="cross-symbol">✟</div>
-            </div>
-        </div>
-        
-        <div class="decorative-line"></div>
-        
-        <div id="warning" class="warning">
-            ⚠ AKSES DITOLAK
-        </div>
-        
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <div class="input-wrapper">
-                    <input type="text" id="username" name="username" placeholder="Enter username" required>
+        <div class="login-form" id="loginFormContainer">
+            <div class="logo">
+                <div class="cross-container">
+                    <div class="cross-symbol">✟</div>
                 </div>
             </div>
             
-            <div class="form-group">
-                <label for="password">Password</label>
-                <div class="input-wrapper">
-                    <input type="password" id="password" name="password" placeholder="Enter password" required>
-                </div>
+            <div class="decorative-line"></div>
+            
+            <div id="warning" class="warning">
+                ⚠ AKSES DITOLAK
             </div>
             
-            <button type="submit" class="btn-login">
-                <span>✟ MASUK ✟</span>
-            </button>
-        </form>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="username" name="username" placeholder="Enter username" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" name="password" placeholder="Enter password" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-login">
+                    <span>✟ MASUK ✟</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="welcome-screen" id="welcomeScreen">
+            <div class="welcome-cross">✟</div>
+            <div class="welcome-title">Welcome</div>
+            <div class="welcome-subtitle">Chrome Hearts Gang</div>
+        </div>
     </div>
 
     <script>
         const loginForm = document.getElementById('loginForm');
         const warningDiv = document.getElementById('warning');
+        const loginFormContainer = document.getElementById('loginFormContainer');
+        const welcomeScreen = document.getElementById('welcomeScreen');
         const correctUsername = 'falahkece';
         const correctPassword = 'falahkece123';
 
@@ -312,8 +396,8 @@
             
             if (username === correctUsername && password === correctPassword) {
                 warningDiv.classList.remove('show');
-                alert('✟ AKSES DITERIMA ✟');
-                loginForm.reset();
+                loginFormContainer.classList.add('hide');
+                welcomeScreen.classList.add('show');
             } else {
                 warningDiv.classList.add('show');
                 setTimeout(() => {
